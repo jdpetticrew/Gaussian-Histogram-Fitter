@@ -5,3 +5,5 @@ This project has the following aims:
 3) To extract the FWHM from the gaussian fit.
 
 This project will be written in C++.
+
+Test data from random.org

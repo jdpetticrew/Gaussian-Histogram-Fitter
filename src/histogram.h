@@ -3,7 +3,9 @@
 
 class histogram{
 	private:
+		double* dataset;
 	public:
-		histogram();
+		histogram(double* data, int size);
+		~histogram();
 };
 #endif
