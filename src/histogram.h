@@ -21,6 +21,7 @@ class histogram{
 		double b;
 		double c;
 		void fit();
+		double FWHM;
 	public:
 		histogram(double* data, int size);
 		~histogram();

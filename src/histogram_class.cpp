@@ -79,4 +79,6 @@ void histogram::fit(){
 	b=mean;
 	c=sqrt(2)*sdev;
 	printf("a: %lf, b: %lf, c: %lf\n", a, b,c);
+	FWHM = 2.3548*sdev;
+	printf("FWHM: %lf",FWHM);
 };
