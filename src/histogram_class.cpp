@@ -1,5 +1,6 @@
 #include "histogram.h"
 #include <stdio.h>
+#include <math.h>
 
 //constructor for histogram class
 histogram::histogram(double* data, int size):size(size){
@@ -8,6 +9,8 @@ histogram::histogram(double* data, int size):size(size){
 	for(i=0;i<size;i++){
 		dataset[i]=data[i];
 	}
+	mean=0;
+	meansquare=0;
 	max_min();
 	binner();
 };
@@ -31,7 +34,7 @@ void histogram::max_min(){
 	}
 };
 
-//Bins the DataSet
+//Bins the DataSet and calculates mean and standard deviation
 void histogram::binner(){
 	printf("Enter Bin Width:");
 	scanf("%lf",&binsize);
@@ -52,9 +55,15 @@ void histogram::binner(){
 		for(i=0;i<bins;i++){
 			if(dataset[j]>=binEdges[i] && dataset[j]<binEdges[i+1]){
 				binValues[i]++;
+				mean+=binCenters[i]/size;
 			}
 		}
 	}
+	for(i=0;i<bins;i++){
+		meansquare+=binValues[i]*(binCenters[i]-mean)*(binCenters[i]-mean);
+	}
+	sdev=sqrt((meansquare-mean)/(size-1));
+	printf("Mean: %lf, Standard Deviation: %lf\n", mean, sdev);
 	FILE *binout;
 	binout=fopen("Hist.txt","w");
 	for(i=0;i<bins;i++){

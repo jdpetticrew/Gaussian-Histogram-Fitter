@@ -13,6 +13,9 @@ class histogram{
 		double* binEdges;
 		double* binCenters;
 		double* binValues;
+		double mean;
+		double meansquare;
+		double sdev; //standard deviation
 	public:
 		histogram(double* data, int size);
 		~histogram();
