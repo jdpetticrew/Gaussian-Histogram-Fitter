@@ -13,6 +13,7 @@ histogram::histogram(double* data, int size):size(size){
 	meansquare=0;
 	max_min();
 	binner();
+	fit();
 };
 
 //destructor for histogram class
@@ -70,4 +71,12 @@ void histogram::binner(){
 		fprintf(binout,"%lf, %lf\n",binCenters[i], binValues[i]);
 	}
 	fclose(binout);
+};
+
+//Fits Gaussian Probability Density Function in the form f(x) = a exp(-((x-b)/c)^2)
+void histogram::fit(){
+	a=1/(sdev*sqrt(2*3.141592653589793));
+	b=mean;
+	c=sqrt(2)*sdev;
+	printf("a: %lf, b: %lf, c: %lf\n", a, b,c);
 };

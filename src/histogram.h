@@ -16,6 +16,11 @@ class histogram{
 		double mean;
 		double meansquare;
 		double sdev; //standard deviation
+		//Gaussian in the form f(x) = a exp(-((x-b)/c)^2)
+		double a;
+		double b;
+		double c;
+		void fit();
 	public:
 		histogram(double* data, int size);
 		~histogram();
