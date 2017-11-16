@@ -16,8 +16,8 @@ histogram::histogram(double* data, int size):size(size){
 	printf("Enter Bin Width:");
 	scanf("%lf",&binsize);
 	binner();
-	print();
 	fit();
+	print();
 };
 
 //constructor for histogram class passed Bin Size
@@ -31,15 +31,14 @@ histogram::histogram(double* data, int size, double binsize):size(size), binsize
 	meansquare=0;
 	max_min();
 	binner();
-	print();
 	fit();
+	print();
 };
 
 //constructor for histogram class Ask for Bin Size and passes string for printing Hist to file.
 histogram::histogram(double* data, int size, char* fname):size(size){
 	filename=new char[strlen(fname)+1];
 	strcpy(filename,fname);
-	printf("%s\n",filename);
 	dataset = new double[size];
 	int i;
 	for(i=0;i<size;i++){
@@ -51,15 +50,14 @@ histogram::histogram(double* data, int size, char* fname):size(size){
 	printf("Enter Bin Width:");
 	scanf("%lf",&binsize);
 	binner();
-	print_custom();
 	fit();
+	print_custom();
 };
 
 //constructor for histogram class passed Bin Size and passes string for printing Hist to file.
 histogram::histogram(double* data, int size, double binsize, char* fname):size(size), binsize(binsize){
 	filename=new char[strlen(fname)+1];
 	strcpy(filename,fname);
-	printf("%s\n",filename);
 	dataset = new double[size];
 	int i;
 	for(i=0;i<size;i++){
@@ -69,8 +67,8 @@ histogram::histogram(double* data, int size, double binsize, char* fname):size(s
 	meansquare=0;
 	max_min();
 	binner();
-	print_custom();
 	fit();
+	print_custom();	
 };
 
 //destructor for histogram class
@@ -120,7 +118,6 @@ void histogram::binner(){
 		meansquare+=binValues[i]*(binCenters[i]-mean)*(binCenters[i]-mean);
 	}
 	sdev=sqrt((meansquare-mean)/(size-1));
-	printf("Mean: %lf, Standard Deviation: %lf\n", mean, sdev);
 };
 
 //Fits Gaussian Probability Density Function in the form f(x) = a exp(-((x-b)/c)^2)
@@ -128,15 +125,14 @@ void histogram::fit(){
 	a=1/(sdev*sqrt(2*3.141592653589793));
 	b=mean;
 	c=sqrt(2)*sdev;
-	printf("a: %lf, b: %lf, c: %lf\n", a, b,c);
 	FWHM = 2.3548*sdev;
-	printf("FWHM: %lf\n",FWHM);
 };
 
-//Prints Histogram Data to File
+//Prints Histogram Data to Hist.txt
 void histogram::print(){
 	FILE *binout;
 	binout=fopen("Hist.txt","w");
+	fprintf(binout,"f(x)= %lf * exp(-((x-%lf)/%lf)^2)\n",a,b,c);
 	int i;
 	for(i=0;i<bins;i++){
 		fprintf(binout,"%lf, %lf\n",binCenters[i], binValues[i]);
@@ -146,12 +142,18 @@ void histogram::print(){
 
 //Prints Histogram Data to custom file
 void histogram::print_custom(){
-	charstored=1;
+	charstored=1; //tells destructor to delete filename
 	FILE *binout;
 	binout=fopen(filename,"w");
+	fprintf(binout,"f(x)= %lf * exp(-((x-%lf)/%lf)^2)\n",a,b,c);
 	int i;
 	for(i=0;i<bins;i++){
 		fprintf(binout,"%lf, %lf\n",binCenters[i], binValues[i]);
 	}
 	fclose(binout);
+};
+
+//Displays Histogram fit in terminal
+void histogram::show_fit(){
+	printf("f(x)= %lf * exp(-((x-%lf)/%lf)^2)\n",a,b,c);
 };

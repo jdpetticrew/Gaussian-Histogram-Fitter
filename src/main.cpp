@@ -1,6 +1,8 @@
 #include "histogram.h"
 #include <stdio.h>
 #include <conio.h>
+#include <string.h>
+
 int main(){
     //Read In Data Set
     FILE *data;
@@ -17,14 +19,21 @@ int main(){
 		fscanf(data,"%lf\n",&dataset[i]);
 	}
 	
+	
 	//Test Constructor without passing BinSize
-	histogram hist(dataset, row_counter);
+	histogram hist1(dataset, row_counter);
+	
+	char example1[strlen("example1.txt")+1]="example1.txt";
 	//Test Constructor without passing BinSize but passing filename
-	histogram hist2(dataset, row_counter,"Hello.txt");
+	histogram hist2(dataset, row_counter,example1);
+	
 	//Test Constructor passing BinSize
-	histogram hist1(dataset, row_counter, 0.1);
+	histogram hist3(dataset, row_counter, 0.1);
+	
+	char example2[strlen("example2.txt")+1]="example2.txt";
 	//Test Constructor passing BinSize and filename
-	histogram hist3(dataset, row_counter, 0.1,"GoodBye.txt");
+	histogram hist4(dataset, row_counter, 0.1,example2);
+	hist4.show_fit();
 	
 	printf("Press space to exit\n");
 	int inputkey;
