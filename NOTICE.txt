@@ -1,0 +1,8 @@
+Gaussian Histogram Fitter
+Copyright 2017 Advanced Detector Centre, Department of Elecronic and Electrical
+Engineering, University of Sheffield, UK.
+
+This product includes software developed at
+Advanced Detector Centre, 
+Department of Electronic and Electrical Engineering,
+University of Sheffield, UK.
