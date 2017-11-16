@@ -24,6 +24,8 @@ class histogram{
 		double FWHM;
 	public:
 		histogram(double* data, int size);
+		histogram(double* data, int size, double binsize);
 		~histogram();
+		double Get_FWHM(){return FWHM;};
 };
 #endif

@@ -2,8 +2,23 @@
 #include <stdio.h>
 #include <math.h>
 
-//constructor for histogram class
+//constructor for histogram class Ask for Bin Size
 histogram::histogram(double* data, int size):size(size){
+	dataset = new double[size];
+	int i;
+	for(i=0;i<size;i++){
+		dataset[i]=data[i];
+	}
+	mean=0;
+	meansquare=0;
+	max_min();
+	printf("Enter Bin Width:");
+	scanf("%lf",&binsize);
+	binner();
+	fit();
+};
+//constructor for histogram class passed Bin Size
+histogram::histogram(double* data, int size, double binsize):size(size), binsize(binsize){
 	dataset = new double[size];
 	int i;
 	for(i=0;i<size;i++){
@@ -37,8 +52,6 @@ void histogram::max_min(){
 
 //Bins the DataSet and calculates mean and standard deviation
 void histogram::binner(){
-	printf("Enter Bin Width:");
-	scanf("%lf",&binsize);
 	int bins=(max-min)/binsize+3;
 	binEdges = new double[bins+1];
 	binCenters = new double[bins];
@@ -80,5 +93,5 @@ void histogram::fit(){
 	c=sqrt(2)*sdev;
 	printf("a: %lf, b: %lf, c: %lf\n", a, b,c);
 	FWHM = 2.3548*sdev;
-	printf("FWHM: %lf",FWHM);
+	printf("FWHM: %lf\n",FWHM);
 };

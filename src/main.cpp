@@ -18,6 +18,8 @@ int main(){
 	}
 	histogram hist(dataset, row_counter);
 	
+	histogram hist1(dataset, row_counter, 0.1);
+	
 	printf("Press space to exit\n");
 	int inputkey;
     while((inputkey=_getch())==0);
