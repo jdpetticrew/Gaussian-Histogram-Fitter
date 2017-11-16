@@ -22,9 +22,16 @@ class histogram{
 		double c;
 		void fit();
 		double FWHM;
+		char* filename;
+		void print();
+		void print_custom();
+		int bins;
+		int charstored=0;
 	public:
 		histogram(double* data, int size);
 		histogram(double* data, int size, double binsize);
+		histogram(double* data, int size, char* fname);
+		histogram(double* data, int size, double binsize, char* fname);
 		~histogram();
 		double Get_FWHM(){return FWHM;};
 };

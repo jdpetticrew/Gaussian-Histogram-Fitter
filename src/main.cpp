@@ -16,9 +16,15 @@ int main(){
 	for(i=0;i<row_counter;i++){
 		fscanf(data,"%lf\n",&dataset[i]);
 	}
-	histogram hist(dataset, row_counter);
 	
+	//Test Constructor without passing BinSize
+	histogram hist(dataset, row_counter);
+	//Test Constructor without passing BinSize but passing filename
+	histogram hist2(dataset, row_counter,"Hello.txt");
+	//Test Constructor passing BinSize
 	histogram hist1(dataset, row_counter, 0.1);
+	//Test Constructor passing BinSize and filename
+	histogram hist3(dataset, row_counter, 0.1,"GoodBye.txt");
 	
 	printf("Press space to exit\n");
 	int inputkey;
