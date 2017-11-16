@@ -2,7 +2,7 @@ This project has the following aims:
 
 1) To bin any dataset into a 1d histogram with a user specified bin width. COMPLETE v0.1.0
 2) To fit the histogram to a gaussian distribution. COMPLETE v0.2.0
-3) To extract the FWHM from the gaussian fit.
+3) To extract the FWHM from the gaussian fit. COMPLETE v0.3.0
 
 This project will be written in C++.
 
