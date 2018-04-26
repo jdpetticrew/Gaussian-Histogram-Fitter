@@ -19,7 +19,7 @@ The class has 4 constructors.
 	The class will ask for a user input for histogram bin width and output the fit and data to the passed file name.
 4) histogram(double* data, int size, double binsize, char* fname);
 	Pass the 1d data array, the number of elements the array contains, the histogram bin width, and a file name to output the data and fit.
-	The class will utput the fit and data to the passed file name.
+	The class will output the fit and data to the passed file name.
 
 Public functions:
 Get_FWHM() will return the Full-Width at Half-Maximum as a double.
