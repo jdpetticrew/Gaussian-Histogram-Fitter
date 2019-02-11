@@ -127,7 +127,7 @@ void histogram::max_min(){
 
 //Bins the DataSet and calculates mean and standard deviation
 void histogram::binner(){
-	bins=(int)(max-min)/binsize+3;
+	bins=(int)((max-min)/binsize+3);
 	binEdges = new double[bins+1];
 	binCenters = new double[bins];
 	binValues = new double[bins];
